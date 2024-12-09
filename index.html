@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Inscripción</title>
+    <link rel="stylesheet" href="style.css"> <!-- Vinculamos el archivo CSS -->
+</head>
+<body>
+    <header>
+        <h1>Bienvenido a nuestro sitio web</h1>
+        <p>¡Inscríbete para recibir noticias y actualizaciones!</p>
+    </header>
+
+    <section class="form-container">
+        <!-- Div para el formulario -->
+        <div id="formulario">
+            <h2>Formulario de Inscripción</h2>
+            <form id="form-inscripcion" onsubmit="procesarFormulario(event)">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="email">Correo Electrónico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit">Inscribirme</button>
+            </form>
+        </div>
+
+        <!-- Div para el mensaje de agradecimiento -->
+        <div id="mensaje" style="display: none;">
+            <h2>¡Inscripción exitosa!</h2>
+            <p>Gracias por inscribirte. Te mantendremos informado.</p>
+        </div>
+    </section>
+
+    <script>
+        // Función que se llama al enviar el formulario
+        function procesarFormulario(event) {
+            // Evitar el comportamiento predeterminado del formulario (que recarga la página)
+            event.preventDefault();
+
+            // Obtener los valores del formulario
+            const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+
+            // Validar los datos
+            if (nombre && email) {
+                // Si los datos son válidos, ocultar el formulario y mostrar el mensaje de éxito
+                document.getElementById('formulario').style.display = 'none'; // Ocultar el formulario
+                document.getElementById('mensaje').style.display = 'block'; // Mostrar el mensaje de éxito
+            } else {
+                // Si hay un error, mostramos una alerta
+                alert('Por favor, completa todos los campos.');
+            }
+        }
+    </script>
+
+</body>
+</html>
